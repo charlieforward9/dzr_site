@@ -14,7 +14,8 @@ class Header extends StatelessWidget {
             PageRouter(name: 'results'),
             PageRouter(name: 'residential'),
             PageRouter(name: 'commercial'),
-            PageRouter(name: 'contact')
+            PageRouter(name: 'contact'),
+            PageRouter(name: 'admin'),
           ],
         ),
         body: body);
@@ -27,7 +28,7 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () => Navigator.of(context).popAndPushNamed('/'),
+        onPressed: () => Navigator.of(context).pushNamed('/'),
         child: const Image(image: AssetImage("logo.png")));
   }
 }
@@ -41,6 +42,7 @@ class PageRouter extends StatelessWidget {
     return ElevatedButton(
       onPressed: () => Navigator.of(context).pushNamed('/$name'),
       child: Text(name),
+      //TODO style: ButtonStyle(shape: ),
     );
   }
 }

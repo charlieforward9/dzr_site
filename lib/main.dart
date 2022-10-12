@@ -1,11 +1,14 @@
-//ignore_for_file: lines_longer_than_80_chars
+///TO CALL flutterfire configure,
+///export PATH="$PATH":"$HOME/.pub-cache/bin"
 import 'package:flutter/material.dart';
 
-import 'config.dart';
+import 'firebase.dart';
 import 'views/views.dart';
 import 'components/header.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FirebaseOps().configFirebase();
   runApp(const MyApp());
 }
 
@@ -20,7 +23,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    configFirebase();
   }
 
   @override
@@ -33,6 +35,7 @@ class _MyAppState extends State<MyApp> {
           "/residential": (context) => const Header(body: ResidentialView()),
           "/commercial": (context) => const Header(body: CommercialView()),
           "/contact": (context) => const Header(body: ContactView()),
+          "/admin": (context) => Header(body: AdminView()),
         });
   }
 }
