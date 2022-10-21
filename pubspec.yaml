@@ -1,5 +1,5 @@
 name: dzr_site
-description: A new Flutter project.
+description: The landing page for clients looking for the best value out of their insurance claims
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -39,6 +39,9 @@ dependencies:
   cloud_firestore: ^3.5.1
   file_picker: ^5.2.1
   firebase_storage: ^10.3.11
+  google_fonts: ^3.0.1
+  font_awesome_flutter: ^10.2.1
+  url_launcher: ^6.1.6
   
 
 dev_dependencies:
@@ -63,7 +66,24 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+      - logo.png
+      - crp1.png
+      - crp2.png
+      - crp3.png
+      - crp4.png
+      - crp5.png
+      - crp6.png
+      - crp7.png
+      - crp8.png
+      - crp9.png
+      - landing1.jpg
+      - landing2.jpg
+      - landing3.jpg
+      - residential.jpg
+      - commercial.jpg
+      - dan.jpg
+      
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

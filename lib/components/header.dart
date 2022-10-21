@@ -1,3 +1,4 @@
+import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
@@ -8,17 +9,18 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
           leading: const Logo(),
           leadingWidth: MediaQuery.of(context).size.width / 6,
           actions: const [
-            PageRouter(name: 'results'),
+            //TODO V2 PageRouter(name: 'results'),
             PageRouter(name: 'residential'),
             PageRouter(name: 'commercial'),
             PageRouter(name: 'contact'),
             PageRouter(name: 'admin'),
           ],
         ),
-        body: body);
+        body: SingleChildScrollView(child: body));
   }
 }
 
@@ -39,10 +41,16 @@ class PageRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () => Navigator.of(context).pushNamed('/$name'),
-      child: Text(name),
-      //TODO style: ButtonStyle(shape: ),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 7,
+      child: ElevatedButton(
+        style: buttonStyle,
+        onPressed: () => Navigator.of(context).pushNamed('/$name'),
+        child: Text(
+          name,
+          style: actionStyle,
+        ),
+      ),
     );
   }
 }

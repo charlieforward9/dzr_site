@@ -1,8 +1,23 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 
 class ProcessCarousel extends StatelessWidget {
-  const ProcessCarousel({super.key});
+  ProcessCarousel({super.key});
+
+  final items = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  final List<String> processText = [
+    "",
+    "LIFE & SAFETY ISSUES",
+    "MITIGATION OF DAMAGES",
+    "ESTABLISH A RECOVERY STRATEGY",
+    "ANALYSIS OF COVERAGES",
+    "VALUATION OF DAMAGES",
+    "NEGOTIATIONS & SETTLEMENT",
+    "RESTORATION OF PROPERTY & OPERATIONS",
+    "ANOTHER HAPPY CLAIMPROS CLIENT!",
+    ""
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -12,23 +27,55 @@ class ProcessCarousel extends StatelessWidget {
       autoPlayInterval: const Duration(seconds: 1),
       autoPlayAnimationDuration: const Duration(seconds: 1),
       viewportFraction: 0.2,
-      autoPlayCurve: Curves.elasticOut,
+      autoPlayCurve: Curves.linear,
     );
 
-    final items = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-    return CarouselSlider(
-        items: items.map((i) {
-          return Builder(
-            builder: (BuildContext context) {
-              return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 1.0),
-                  decoration: const BoxDecoration(color: Colors.amber),
-                  child: Text('image $i'));
-            },
-          );
-        }).toList(),
-        options: options);
+    return Container(
+      height: MediaQuery.of(context).size.height / 2,
+      child: Center(
+        child: Column(
+          children: [
+            Text("CLAIMS RECOVERY PROCESS", style: subTitleStyle),
+            Spacer(),
+            CarouselSlider(
+                items: items.map((i) {
+                  if (i == 0) {
+                    return Container(
+                      child: Center(
+                        child: Text(
+                          "Claims \nRecovery \nProcess",
+                          textAlign: TextAlign.end,
+                          softWrap: true,
+                          style: subTitleStyle,
+                        ),
+                      ),
+                    );
+                  }
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Stack(
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            Image(image: AssetImage("crp$i.png")),
+                            Container(
+                              decoration:
+                                  const BoxDecoration(color: Colors.white),
+                              child: Text(
+                                processText[i],
+                                softWrap: true,
+                                textAlign: TextAlign.center,
+                                style: captionStyle,
+                                maxLines: 2,
+                              ),
+                            )
+                          ]);
+                    },
+                  );
+                }).toList(),
+                options: options),
+          ],
+        ),
+      ),
+    );
   }
 }
