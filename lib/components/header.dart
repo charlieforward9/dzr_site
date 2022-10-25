@@ -17,7 +17,6 @@ class Header extends StatelessWidget {
             PageRouter(name: 'residential'),
             PageRouter(name: 'commercial'),
             PageRouter(name: 'contact'),
-            PageRouter(name: 'admin'),
           ],
         ),
         body: SingleChildScrollView(child: body));
@@ -48,7 +47,7 @@ class PageRouter extends StatelessWidget {
         onPressed: () => Navigator.of(context).pushNamed('/$name'),
         child: Text(
           name,
-          style: actionStyle,
+          style: headerStyle,
         ),
       ),
     );

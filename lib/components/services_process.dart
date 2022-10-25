@@ -30,24 +30,22 @@ class ProcessCarousel extends StatelessWidget {
       autoPlayCurve: Curves.linear,
     );
 
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height / 2,
       child: Center(
         child: Column(
           children: [
             Text("CLAIMS RECOVERY PROCESS", style: subTitleStyle),
-            Spacer(),
+            const Spacer(),
             CarouselSlider(
                 items: items.map((i) {
                   if (i == 0) {
-                    return Container(
-                      child: Center(
-                        child: Text(
-                          "Claims \nRecovery \nProcess",
-                          textAlign: TextAlign.end,
-                          softWrap: true,
-                          style: subTitleStyle,
-                        ),
+                    return Center(
+                      child: Text(
+                        "Claims \nRecovery \nProcess",
+                        textAlign: TextAlign.end,
+                        softWrap: true,
+                        style: subTitleStyle,
                       ),
                     );
                   }

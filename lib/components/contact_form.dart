@@ -65,7 +65,7 @@ class ContactFormState extends State<ContactForm> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   _formInput("Details", lines: 3),
                   Padding(
                     padding: const EdgeInsets.all(16),
@@ -79,7 +79,7 @@ class ContactFormState extends State<ContactForm> {
                               child: Text('Submit', style: actionStyle))),
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
             ],

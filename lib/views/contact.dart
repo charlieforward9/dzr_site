@@ -26,7 +26,7 @@ class ContactView extends StatelessWidget {
                 top: MediaQuery.of(context).size.height / 4,
                 child: Container(
                   decoration: titleBox,
-                  child: Text("CONTACT ME",
+                  child: Text("CONTACT US",
                       style: titleStyle, textAlign: TextAlign.center),
                 ),
               ),

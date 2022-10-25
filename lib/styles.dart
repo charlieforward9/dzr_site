@@ -9,6 +9,9 @@ const Decoration titleBox = BoxDecoration(color: secondaryColor);
 final TextStyle titleStyle =
     GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 50);
 
+final TextStyle headerStyle =
+    GoogleFonts.montserrat(fontWeight: FontWeight.w600, fontSize: 25);
+
 final TextStyle subTitleStyle = GoogleFonts.comfortaa(
     fontWeight: FontWeight.w600, fontSize: 30, color: primaryColor);
 
