@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dzr_site/styles.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -43,26 +44,59 @@ class _FileSelectorState extends State<FileSelector> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          AspectRatio(
-            aspectRatio: 9 / 19.5,
-            child: pickedFile != null
-                ? Container(
-                    color: Colors.blue[100],
-                    child: Image.memory(pickedFile!.bytes!, fit: BoxFit.cover))
-                : null,
+    return FittedBox(
+      fit: BoxFit.contain,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height / 3,
+        child: Align(
+          child: AspectRatio(
+            aspectRatio: 16 / 12,
+            child: Align(
+              child: Column(
+                children: [
+                  AspectRatio(
+                    aspectRatio: 16 / 11,
+                    child: Container(
+                      color: Colors.blue[100],
+                      child: pickedFile != null
+                          ? Image.memory(pickedFile!.bytes!, fit: BoxFit.cover)
+                          : const Text("No image selected"),
+                    ),
+                  ),
+                  AspectRatio(
+                    aspectRatio: 16 / 1,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: selectFile,
+                          style: buttonStyle,
+                          child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text("Select File",
+                                style: smallActionStyle, maxLines: 1),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => pickedFile != null
+                              ? uploadFile("home")
+                              : selectFile,
+                          style: buttonStyle,
+                          child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text("Upload File",
+                                style: smallActionStyle, maxLines: 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  buildProgress()
+                ],
+              ),
+            ),
           ),
-          const SizedBox(height: 32),
-          ElevatedButton(
-              onPressed: selectFile, child: const Text("Select File")),
-          const SizedBox(height: 32),
-          ElevatedButton(
-              onPressed: () => uploadFile("home"),
-              child: const Text("Upload File")),
-          buildProgress(),
-        ],
+        ),
       ),
     );
   }
@@ -88,7 +122,7 @@ class _FileSelectorState extends State<FileSelector> {
                 ],
               ));
         } else {
-          return const SizedBox(height: 50);
+          return const SizedBox(height: 0);
         }
       });
 }
