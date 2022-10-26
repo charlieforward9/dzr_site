@@ -10,14 +10,14 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 4,
+      height: MediaQuery.of(context).size.height / 6,
       decoration: const BoxDecoration(color: secondaryColor),
       child: Center(
           child: Column(
         children: [
           const Spacer(),
           const PageRouter(name: "admin"),
-          socialBanner(context),
+          socialBanner(),
           const Spacer(),
         ],
       )),
@@ -25,7 +25,7 @@ class Footer extends StatelessWidget {
   }
 }
 
-Widget socialBanner(BuildContext context) {
+Widget socialBanner() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [

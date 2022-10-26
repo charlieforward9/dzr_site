@@ -8,6 +8,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: const Logo(),
@@ -45,9 +46,13 @@ class PageRouter extends StatelessWidget {
       child: ElevatedButton(
         style: buttonStyle,
         onPressed: () => Navigator.of(context).pushNamed('/$name'),
-        child: Text(
-          name,
-          style: headerStyle,
+        child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text(
+            name.length > 9 ? name : name.padLeft(9).padRight(10),
+            maxLines: 1,
+            style: headerStyle,
+          ),
         ),
       ),
     );

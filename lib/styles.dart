@@ -24,6 +24,9 @@ final TextStyle paragraphStyle = GoogleFonts.montserrat(
 final TextStyle actionStyle =
     GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 25);
 
+final TextStyle smallActionStyle =
+    GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 20);
+
 final ButtonStyle buttonStyle =
     ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith<Color?>(
   (Set<MaterialState> states) {
