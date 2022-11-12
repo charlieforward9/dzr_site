@@ -4,11 +4,19 @@ import 'package:flutter/material.dart';
 
 import 'firebase.dart';
 import 'views/views.dart';
-import 'components/header.dart';
+import 'package:dzr_site/components/components.dart';
+
+//TODO Setup Admin DB connection
+//TODO Finish style fixes
+//TODO enhance security measures
+//TODO mobile friendly
+//TODO setup email trigger for new leads https://console.firebase.google.com/u/0/project/dzr-site/extensions/instances/firestore-send-email?tab=config
+//TODO                                   https://firebase.google.com/docs/extensions/official/firestore-send-email
+//TODO                                   https://stackoverflow.com/questions/65537786/firebase-trigger-email-and-smtp-connection-uri-using-gmail
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await FirebaseOps().configFirebase();
+  await cloudOps.configFirebase();
   runApp(const MyApp());
 }
 
@@ -28,10 +36,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(title: 'Your Public Adjuster',
-        //theme: ,
+        // theme: ThemeData(primaryColor: Colors.white),
         routes: {
           "/": (context) => const Header(body: HomeView()),
-          "/results": (context) => const Header(body: ResultsView()),
+          //TODO V2 "/results": (context) => const Header(body: ResultsView()),
           "/residential": (context) => const Header(body: ResidentialView()),
           "/commercial": (context) => const Header(body: CommercialView()),
           "/contact": (context) => const Header(body: ContactView()),
