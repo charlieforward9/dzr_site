@@ -38,12 +38,31 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(title: 'Your Public Adjuster',
         // theme: ThemeData(primaryColor: Colors.white),
         routes: {
-          "/": (context) => const Header(body: HomeView()),
+          "/": (context) => const Header(
+                name: 'home',
+                body: HomeView(),
+              ),
+          "/home": (context) => const Header(
+                name: 'home',
+                body: HomeView(),
+              ),
+          "/residential": (context) => const Header(
+                name: 'residential',
+                body: ResidentialView(),
+              ),
+          "/commercial": (context) => const Header(
+                name: 'commercial',
+                body: CommercialView(),
+              ),
+          "/contact": (context) => const Header(
+                name: 'contact',
+                body: ContactView(),
+              ),
+          "/admin": (context) => Header(
+                name: 'admin',
+                body: AdminView(),
+              ),
           //TODO V2 "/results": (context) => const Header(body: ResultsView()),
-          "/residential": (context) => const Header(body: ResidentialView()),
-          "/commercial": (context) => const Header(body: CommercialView()),
-          "/contact": (context) => const Header(body: ContactView()),
-          "/admin": (context) => Header(body: AdminView()),
         });
   }
 }
