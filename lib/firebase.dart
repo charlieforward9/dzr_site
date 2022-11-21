@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_function_literals_in_foreach_calls
 
 import 'dart:developer';
-import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'firebase_options.dart';
 
 CloudOps cloudOps = CloudOps();
@@ -23,18 +23,11 @@ class CloudOps {
   }
 
 //TODO this needs to be fixed to return future images one by one and not finish until they are all finished
-  Future<List<Uint8List>> getImagesData(String folder) async {
-    final List<Uint8List> images = [];
-    final storageRef = storage.ref().child(folder);
-    final imageRef =
-        await storageRef.listAll().then((ListResult result) => result.items);
-    imageRef.sort(((a, b) => a.name.compareTo(b.name)));
-    imageRef.forEach((image) async {
-      log(image.name);
-      await image.getData().then((data) => images.add(data!));
-    });
-
-    return images;
+  Future<List<Reference>> getImages(String path) async {
+    return await FirebaseStorage.instance
+        .ref('images/$path')
+        .listAll()
+        .then((results) => results.items);
   }
 
   Future<List<String>> getImageDescriptionData(String folder) async {
@@ -51,4 +44,12 @@ class CloudOps {
     );
     return descriptions;
   }
+}
+
+@immutable
+class FirebaseImage {
+  final Reference? ref;
+  final Image? img;
+
+  const FirebaseImage({required this.ref, required this.img});
 }
