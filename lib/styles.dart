@@ -9,8 +9,8 @@ const Decoration titleBox = BoxDecoration(color: secondaryColor);
 final TextStyle titleStyle =
     GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 50);
 
-final TextStyle headerStyle =
-    GoogleFonts.montserrat(fontWeight: FontWeight.w600, fontSize: 25);
+final TextStyle headerStyle = GoogleFonts.montserrat(
+    color: Colors.black, fontWeight: FontWeight.w600, fontSize: 20);
 
 final TextStyle subTitleStyle = GoogleFonts.comfortaa(
     fontWeight: FontWeight.w600, fontSize: 30, color: primaryColor);
@@ -21,17 +21,15 @@ final TextStyle captionStyle =
 final TextStyle paragraphStyle = GoogleFonts.montserrat(
     fontWeight: FontWeight.w400, fontSize: 20, height: 2);
 
-final TextStyle actionStyle =
-    GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 25);
+final TextStyle actionStyle = GoogleFonts.comfortaa(
+    fontWeight: FontWeight.w600, fontSize: 25, color: Colors.white);
 
 final TextStyle smallActionStyle =
     GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 20);
 
-final ButtonStyle buttonStyle =
-    ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-  (Set<MaterialState> states) {
-    return states.contains(MaterialState.pressed)
-        ? primaryColor
-        : secondaryColor;
-  },
-));
+const ButtonStyle landingButtonStyle =
+    ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xfff8941c)));
+
+const ButtonStyle buttonStyle = ButtonStyle(
+    shadowColor: MaterialStatePropertyAll(Colors.transparent),
+    backgroundColor: MaterialStatePropertyAll(Colors.transparent));

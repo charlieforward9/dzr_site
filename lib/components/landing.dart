@@ -37,16 +37,21 @@ class Landing extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-          style: buttonStyle,
+          style: landingButtonStyle,
           onPressed: () => Navigator.of(context).pushNamed('/contact'),
           child: Container(
-            height: MediaQuery.of(context).size.height / 8,
+            // height: MediaQuery.of(context).size.height / 6,
             width: MediaQuery.of(context).size.width / 4,
-            margin: const EdgeInsets.symmetric(horizontal: 1.0),
+            margin: const EdgeInsets.all(10.0),
             child: Center(
-              child: Text(
-                'File your claim, correctly!',
-                style: actionStyle,
+              child: RichText(
+                text: TextSpan(children: const [
+                  TextSpan(text: 'Get the coverage you deserve\n'),
+                  WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: Icon(Icons.keyboard_double_arrow_right_outlined,
+                          color: Colors.white))
+                ], style: actionStyle),
                 textAlign: TextAlign.center,
               ),
             ),

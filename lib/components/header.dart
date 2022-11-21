@@ -7,7 +7,6 @@ class Header extends StatefulWidget {
   const Header({super.key, required this.name, required this.body});
 
   static const List<String> actionStrings = [
-    'home',
     'residential',
     'commercial',
     'contact'
@@ -40,10 +39,11 @@ class _HeaderState extends State<Header> {
           actions: screenSize.height > screenSize.width
               ? [
                   DropdownButton(
-                      value: widget.name,
+                      alignment: Alignment.centerRight,
                       items: Header.dropdownActions,
-                      dropdownColor: Colors.transparent,
-                      icon: const Icon(Icons.more_vert_sharp),
+                      icon: const Icon(Icons.list_sharp),
+                      iconSize: 36,
+                      hint: Text("Learn More", style: headerStyle),
                       onChanged: (_) => null)
                 ]
               : Header.actions,
@@ -69,20 +69,13 @@ class PageRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width / 7,
-      child: ElevatedButton(
-        style: buttonStyle,
-        onPressed: () =>
-            Navigator.of(context).pushNamed('/${name.replaceAll(" ", "")}'),
-        child: FittedBox(
-          fit: BoxFit.fitWidth,
-          child: Text(
-            name.padRight(10),
-            maxLines: 1,
-            style: headerStyle,
-          ),
-        ),
+    return ElevatedButton(
+      style: buttonStyle,
+      onPressed: () => Navigator.of(context).pushNamed('/$name'),
+      child: Text(
+        name,
+        maxLines: 1,
+        style: headerStyle,
       ),
     );
   }

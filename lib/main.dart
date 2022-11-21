@@ -42,10 +42,6 @@ class _MyAppState extends State<MyApp> {
                 name: 'home',
                 body: HomeView(),
               ),
-          "/home": (context) => const Header(
-                name: 'home',
-                body: HomeView(),
-              ),
           "/residential": (context) => const Header(
                 name: 'residential',
                 body: ResidentialView(),
@@ -62,6 +58,7 @@ class _MyAppState extends State<MyApp> {
                 name: 'admin',
                 body: AdminView(),
               ),
+          "/admindev": (context) => const AdminDash(),
           //TODO V2 "/results": (context) => const Header(body: ResultsView()),
         });
   }
