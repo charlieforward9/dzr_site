@@ -8,21 +8,27 @@ class AdminView extends StatelessWidget {
   final emailCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
 
-//TODO auth persistence
   @override
   Widget build(BuildContext context) {
-    return SignInScreen(
-      providerConfigs: const [
-        EmailProviderConfiguration(),
-      ],
-      showAuthActionSwitch: false,
-      actions: [
-        AuthStateChangeAction<SignedIn>((context, state) {
-          Navigator.of(context).push(MaterialPageRoute<void>(
-            builder: (context) => const AdminDash(),
-          ));
-        }),
-      ],
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      //child: const AdminDash()
+      child: SignInScreen(
+        sideBuilder: ((context, constraints) =>
+            const Image(image: AssetImage('logo.png'))),
+        providerConfigs: const [
+          EmailProviderConfiguration(),
+        ],
+        showAuthActionSwitch: false,
+        actions: [
+          AuthStateChangeAction<SignedIn>((context, state) {
+            Navigator.of(context).push(MaterialPageRoute<void>(
+              builder: (context) => const AdminDash(),
+            ));
+          }),
+        ],
+      ),
     );
   }
 }

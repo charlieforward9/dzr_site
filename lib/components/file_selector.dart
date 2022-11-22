@@ -1,12 +1,13 @@
-import 'dart:io';
-
+import 'package:dzr_site/bloc/firebase_bloc.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class FileSelector extends StatefulWidget {
-  const FileSelector({super.key});
+  final String path;
+  final FirebaseBloc bloc;
+
+  const FileSelector({super.key, required this.path, required this.bloc});
 
   @override
   State<FileSelector> createState() => _FileSelectorState();
@@ -14,33 +15,6 @@ class FileSelector extends StatefulWidget {
 
 class _FileSelectorState extends State<FileSelector> {
   PlatformFile? pickedFile;
-  UploadTask? uploadTask;
-
-  Future selectFile() async {
-    FilePickerResult? result = await FilePicker.platform
-        .pickFiles(type: FileType.image, allowMultiple: false);
-    if (result != null) {
-      setState(() {
-        pickedFile = result.files.first;
-      });
-    }
-  }
-
-  Future uploadFile(String path) async {
-    final file = File.fromRawPath(pickedFile!.bytes!);
-
-    final ref = FirebaseStorage.instance.ref().child("/images/$path");
-    setState(() {
-      uploadTask = ref.putFile(file);
-    });
-
-    // To get urlDownload as soon as its available
-    // final snapshot = await uploadTask!.whenComplete(() {});
-    // final urlDownload = await snapshot.ref.getDownloadURL();
-    setState(() {
-      uploadTask = null;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +43,13 @@ class _FileSelectorState extends State<FileSelector> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                          onPressed: selectFile,
-                          style: buttonStyle,
+                          onPressed: () async {
+                            final result = await selectFile();
+                            result != null
+                                ? setState(() => pickedFile = result)
+                                : null;
+                          },
+                          style: headerButtonStyle,
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text("Select File",
@@ -78,10 +57,14 @@ class _FileSelectorState extends State<FileSelector> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: () => pickedFile != null
-                              ? uploadFile("home")
-                              : selectFile,
-                          style: buttonStyle,
+                          onPressed: () {
+                            pickedFile != null
+                                ? widget.bloc.add(FirebaseAdd(
+                                    path: widget.path, file: pickedFile!))
+                                : null;
+                            Navigator.of(context).pop();
+                          },
+                          style: headerButtonStyle,
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text("Upload File",
@@ -91,7 +74,6 @@ class _FileSelectorState extends State<FileSelector> {
                       ],
                     ),
                   ),
-                  buildProgress()
                 ],
               ),
             ),
@@ -101,28 +83,12 @@ class _FileSelectorState extends State<FileSelector> {
     );
   }
 
-  Widget buildProgress() => StreamBuilder<TaskSnapshot>(
-      stream: uploadTask?.snapshotEvents,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          final data = snapshot.data!;
-          double progress = data.bytesTransferred / data.totalBytes;
-          return SizedBox(
-              height: 50,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  LinearProgressIndicator(
-                    value: progress,
-                    color: Colors.green,
-                  ),
-                  Center(
-                    child: Text('${(100 * progress).roundToDouble()}%'),
-                  )
-                ],
-              ));
-        } else {
-          return const SizedBox(height: 0);
-        }
-      });
+  Future<PlatformFile?> selectFile() async {
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(type: FileType.image, allowMultiple: false);
+    if (result != null) {
+      return result.files.first;
+    }
+    return null;
+  }
 }

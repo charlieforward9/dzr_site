@@ -1,4 +1,4 @@
-import 'package:dzr_site/cubit/firebase_cubit.dart';
+import 'package:dzr_site/bloc/firebase_bloc.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -11,8 +11,8 @@ class Landing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FirebaseCubit()..getContent(path),
-      child: BlocBuilder<FirebaseCubit, FirebaseState>(
+      create: (context) => FirebaseBloc()..add(FirebaseFetch(path: path)),
+      child: BlocBuilder<FirebaseBloc, FirebaseState>(
         builder: (context, state) {
           return Stack(
             alignment: AlignmentDirectional.center,

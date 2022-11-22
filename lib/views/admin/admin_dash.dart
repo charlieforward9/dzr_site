@@ -8,31 +8,45 @@ class AdminDash extends StatefulWidget {
   State<AdminDash> createState() => _AdminDashState();
 }
 
-class _AdminDashState extends State<AdminDash> {
+class _AdminDashState extends State<AdminDash>
+    with SingleTickerProviderStateMixin {
+  static const List<String> _paths = ["Home", "Results", "Services", "Leads"];
+
+  final List<Widget> _tabs = [
+    Tab(text: _paths[0]),
+    Tab(text: _paths[1]),
+    Tab(text: _paths[2]),
+    Tab(text: _paths[3])
+  ];
+
+  final List<Widget> _destinations = const [
+    AdminHome(),
+    AdminResults(),
+    AdminServices(),
+    AdminLeads(),
+  ];
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: _tabs.length);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Edit Web App Content'),
-          bottom: const TabBar(
-            tabs: [
-              Tab(text: "Home"),
-              Tab(text: "Results"),
-              Tab(text: "Services"),
-              Tab(text: "Leads", icon: Icon(Icons.person))
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Edit Site Content'),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: _tabs,
         ),
-        body: const TabBarView(
-          children: [
-            AdminHome(),
-            AdminResults(),
-            AdminService(),
-            AdminLeads(),
-          ],
-        ),
+      ),
+      body: TabBarView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: _tabController,
+        children: _destinations,
       ),
     );
   }

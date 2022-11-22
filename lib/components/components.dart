@@ -4,4 +4,4 @@ export 'footer.dart';
 export 'header.dart';
 export 'landing.dart';
 export 'services_process.dart';
-export 'file_dialog.dart';
+export 'consent_dialog.dart';
