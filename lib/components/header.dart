@@ -70,7 +70,7 @@ class PageRouter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: buttonStyle,
+      style: headerButtonStyle,
       onPressed: () => Navigator.of(context).pushNamed('/$name'),
       child: Text(
         name,

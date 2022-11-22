@@ -30,6 +30,6 @@ final TextStyle smallActionStyle =
 const ButtonStyle landingButtonStyle =
     ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xfff8941c)));
 
-const ButtonStyle buttonStyle = ButtonStyle(
+const ButtonStyle headerButtonStyle = ButtonStyle(
     shadowColor: MaterialStatePropertyAll(Colors.transparent),
     backgroundColor: MaterialStatePropertyAll(Colors.transparent));
