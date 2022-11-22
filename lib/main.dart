@@ -6,9 +6,7 @@ import 'firebase.dart';
 import 'views/views.dart';
 import 'package:dzr_site/components/components.dart';
 
-//TODO Setup Admin DB connection
 //TODO Finish style fixes
-//TODO enhance security measures
 //TODO mobile friendly
 //TODO setup email trigger for new leads https://console.firebase.google.com/u/0/project/dzr-site/extensions/instances/firestore-send-email?tab=config
 //TODO                                   https://firebase.google.com/docs/extensions/official/firestore-send-email
@@ -59,7 +57,6 @@ class _MyAppState extends State<MyApp> {
                 body: AdminView(),
               ),
           "/admindev": (context) => const AdminDash(),
-          //TODO V2 "/results": (context) => const Header(body: ResultsView()),
         });
   }
 }

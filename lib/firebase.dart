@@ -22,7 +22,6 @@ class CloudOps {
     storage = FirebaseStorage.instance;
   }
 
-//TODO this needs to be fixed to return future images one by one and not finish until they are all finished
   Future<List<Reference>> getImages(String path) async {
     return await FirebaseStorage.instance
         .ref('images/$path')

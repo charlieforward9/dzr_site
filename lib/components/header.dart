@@ -12,7 +12,6 @@ class Header extends StatefulWidget {
     'contact'
   ];
 
-  //TODO V2 PageRouter(name: 'results'),
   static List<PageRouter> actions = actionStrings
       .map<PageRouter>((string) => PageRouter(name: string))
       .toList();
@@ -44,7 +43,7 @@ class _HeaderState extends State<Header> {
                       icon: const Icon(Icons.list_sharp),
                       iconSize: 36,
                       hint: Text("Learn More", style: headerStyle),
-                      onChanged: (_) => null)
+                      onChanged: (_) {})
                 ]
               : Header.actions,
         ),

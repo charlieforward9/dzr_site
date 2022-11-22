@@ -70,7 +70,7 @@ class ContactFormState extends State<ContactForm> {
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: ElevatedButton(
-                      style: buttonStyle,
+                      style: headerButtonStyle,
                       onPressed: _storeContact,
                       child: SizedBox(
                           height: 72,
