@@ -15,9 +15,19 @@ class ContactFormState extends State<ContactForm> {
   final _formKey = GlobalKey<FormState>();
   Map<String, dynamic> leadData = {};
 
+  void _configEmail() {
+    leadData["to"] = "drobinson@claimpros.com";
+    leadData["message"] = {
+      "subject": "New Claims Lead: ${leadData["Name"]}",
+      "text":
+          "A lead submitted a contact through the website \n * Lead Name: ${leadData["Name"]} \n * Email: ${leadData["Email"]} \n * Phone: ${leadData["Phone"]} \n * Zip: ${leadData["Zip"]} \n * Details: ${leadData["Details"]}"
+    };
+  }
+
   void _storeContact() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+      _configEmail();
       cloudOps.firestore.collection("leads").add(leadData);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Processing Data')),
@@ -27,60 +37,30 @@ class ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
-    // Build a Form widget using the _formKey created above.
     return Form(
       key: _formKey,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height / 2,
         width: MediaQuery.of(context).size.width,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _formInput("Name"),
-                      const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 16)),
-                      _formInput("Email"),
-                    ],
-                  ),
-                  const Padding(padding: EdgeInsets.symmetric(horizontal: 32)),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _formInput("Phone"),
-                      const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 16)),
-                      _formInput("Zip Code"),
-                    ],
-                  ),
-                ],
-              ),
+              _formInput("Name"),
               const Padding(padding: EdgeInsets.symmetric(vertical: 16)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Spacer(),
-                  _formInput("Details", lines: 3),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: ElevatedButton(
-                      style: headerButtonStyle,
-                      onPressed: _storeContact,
-                      child: SizedBox(
-                          height: 72,
-                          width: 144,
-                          child: Center(
-                              child: Text('Submit', style: actionStyle))),
-                    ),
-                  ),
-                  const Spacer(),
-                ],
+              _formInput("Email"),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 16)),
+              _formInput("Phone"),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 16)),
+              _formInput("Zip Code"),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 16)),
+              _formInput("Details", lines: 3),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 16)),
+              ElevatedButton(
+                style: actionButtonStyle,
+                onPressed: _storeContact,
+                child: Container(
+                    margin: const EdgeInsets.all(10.0),
+                    child: Text('Submit', style: actionStyle)),
               ),
             ],
           ),
@@ -90,32 +70,37 @@ class ContactFormState extends State<ContactForm> {
   }
 
   Widget _formInput(String field, {int lines = 1}) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: Colors.white70,
-        border: Border.all(),
-        borderRadius: BorderRadius.circular(1),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Text(" $field:", style: paragraphStyle),
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
-            child: TextFormField(
-              maxLines: lines,
-              validator: (value) => value == null || value.isEmpty
-                  ? 'Please enter your information'
-                  : null,
-              onSaved: (String? value) {
-                _storeValue(field, value);
-              },
+    final screenSize = MediaQuery.of(context).size;
+    return SizedBox(
+      height: 45.0 * lines,
+      width: screenSize.width / 2,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.white70,
+          border: Border.all(color: actionColor.withOpacity(0.5), width: 5),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Text(" $field:", style: paragraphStyle),
             ),
-          ),
-        ],
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: TextFormField(
+                maxLines: lines,
+                validator: (value) => value == null || value.isEmpty
+                    ? 'Please enter your information'
+                    : null,
+                onSaved: (String? value) {
+                  _storeValue(field, value);
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
