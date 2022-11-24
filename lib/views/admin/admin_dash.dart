@@ -10,19 +10,16 @@ class AdminDash extends StatefulWidget {
 
 class _AdminDashState extends State<AdminDash>
     with SingleTickerProviderStateMixin {
-  static const List<String> _paths = ["Home", "Other", "Leads"];
+  static const List<String> _paths = ["Home", "Other"];
 
   final List<Widget> _tabs = [
     Tab(text: _paths[0]),
     Tab(text: _paths[1]),
-    Tab(text: _paths[2]),
-
   ];
 
   final List<Widget> _destinations = const [
     AdminHome(),
-    AdminServices(),
-    AdminLeads(),
+    AdminMisc(),
   ];
   late TabController _tabController;
 

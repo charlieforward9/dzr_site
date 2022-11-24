@@ -63,6 +63,9 @@ class _FileSelectorState extends State<FileSelector> {
                                     path: widget.path, file: pickedFile!))
                                 : null;
                             Navigator.of(context).pop();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('File Uploaded')),
+                            );
                           },
                           style: headerButtonStyle,
                           child: FittedBox(
