@@ -49,10 +49,9 @@ class Landing extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                style: landingButtonStyle,
+                style: actionButtonStyle,
                 onPressed: () => Navigator.of(context).pushNamed('/contact'),
                 child: Container(
-                  // height: MediaQuery.of(context).size.height / 6,
                   width: MediaQuery.of(context).size.width / 4,
                   margin: const EdgeInsets.all(10.0),
                   child: Center(

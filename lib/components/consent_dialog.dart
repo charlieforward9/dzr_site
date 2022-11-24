@@ -27,7 +27,7 @@ Future<void> consentDialog(
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            style: landingButtonStyle,
+            style: actionButtonStyle,
             onPressed: primaryCallback,
             child: Text(primaryAction),
           ),

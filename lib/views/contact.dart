@@ -23,7 +23,7 @@ class ContactView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: MediaQuery.of(context).size.height / 4,
+                top: MediaQuery.of(context).size.height / 5,
                 child: Container(
                   decoration: titleBox,
                   child: Text("CONTACT US",
@@ -31,7 +31,7 @@ class ContactView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: MediaQuery.of(context).size.height / 2,
+                top: MediaQuery.of(context).size.height / 3,
                 child: const ContactForm(),
               ),
             ],

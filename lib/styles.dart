@@ -27,9 +27,11 @@ final TextStyle actionStyle = GoogleFonts.comfortaa(
 final TextStyle smallActionStyle =
     GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 20);
 
-const ButtonStyle landingButtonStyle =
-    ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xfff8941c)));
+const ButtonStyle actionButtonStyle =
+    ButtonStyle(backgroundColor: MaterialStatePropertyAll(actionColor));
 
 const ButtonStyle headerButtonStyle = ButtonStyle(
     shadowColor: MaterialStatePropertyAll(Colors.transparent),
     backgroundColor: MaterialStatePropertyAll(Colors.transparent));
+
+const Color actionColor = Color(0xfff8941c);

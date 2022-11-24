@@ -64,7 +64,8 @@ class FirebaseBloc extends Bloc<FirebaseEvent, FirebaseState> {
     final screenSize = MediaQuery.of(context).size;
     return SingleChildScrollView(
         child: SizedBox(
-            height: screenSize.height * 0.8,
+            height: (screenSize.height * 0.3 * data.length)
+                .clamp(screenSize.height * 0.3, screenSize.height * 0.8),
             width: screenSize.width,
             child: ListView.builder(
                 itemCount: data.length,
