@@ -1,61 +1,112 @@
+import 'package:dzr_site/bloc/firebase_bloc.dart';
 import 'package:dzr_site/components/components.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CommercialView extends StatelessWidget {
   const CommercialView({super.key});
+  final String path = "misc/commercial";
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 2,
-            width: MediaQuery.of(context).size.width,
-            child: Stack(
-              alignment: Alignment.bottomCenter,
+          BlocProvider(
+            create: (context) => FirebaseBloc()..add(FirebaseFetch(path: path)),
+            child: BlocBuilder<FirebaseBloc, FirebaseState>(
+              builder: (context, state) {
+                if (state is FirebaseLoaded) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height / 2,
+                    width: MediaQuery.of(context).size.width,
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        Positioned(
+                            top: MediaQuery.of(context).size.height * -1.5,
+                            child: state.firebaseImages[0].img!),
+                        Positioned(
+                          top: MediaQuery.of(context).size.height / 4,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                                minWidth: screenSize(context).width / 2,
+                                maxWidth: screenSize(context).width),
+                            child: Container(
+                              decoration: titleBox,
+                              child: Text(
+                                "OUR BUSINESS\n FOR YOUR BUSINESS",
+                                style: titleStyle,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (state is FirebaseError) {
+                  return Text(state.error.toString());
+                } else {
+                  return const CircularProgressIndicator();
+                }
+              },
+            ),
+          ),
+          const SizedBox(height: 20),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: 300,
+              maxHeight: 750,
+              minWidth: screenSize(context).width * 0.8,
+              maxWidth: screenSize(context).width * 0.9,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Positioned(
-                  top: MediaQuery.of(context).size.height * -1.5,
-                  child: const Image(
-                    image: AssetImage("commercial.jpg"),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 80,
+                    maxHeight: 200,
                   ),
+                  child: Text(
+                      "Handling insurance claims come at a high opportunity cost.",
+                      style: subTitleStyle,
+                      textAlign: TextAlign.center),
                 ),
-                Positioned(
-                  top: MediaQuery.of(context).size.height / 4,
-                  child: Container(
-                    decoration: titleBox,
-                    child: Text("OUR BUSINESS FOR YOUR BUSINESS",
-                        style: titleStyle, textAlign: TextAlign.center),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 100,
+                    maxHeight: 300,
                   ),
+                  child: Text(
+                      "For commerial property owner suffering damage resulting in a covered insurance claim, mandatory insurance policy conditions are required to be completed timely or your coverage may be severely limited or even denied.",
+                      style: paragraphStyle),
+                ),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 100,
+                    maxHeight: 200,
+                  ),
+                  child: Text(
+                      "Meetings and inventory documentation requirements take precious time away from work obligations. Let us navigate your claim process on your behalf, so you can focus on expediting your business recovery.",
+                      style: paragraphStyle),
+                ),
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 100,
+                    maxHeight: 120,
+                  ),
+                  child: Text(
+                      "Call me today and learn more about FREE claim and policy reviews.",
+                      style: subTitleStyle,
+                      textAlign: TextAlign.center),
                 ),
               ],
             ),
           ),
-          SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width * 0.8,
-              child: Column(children: [
-                Text(
-                    "Commercial insurance claims present a complexity of mandatory insurance policy obligations and conditions, which are required to be completed timely or your coverage may be severely limited or even denied. Claim Pros is proud to offer its clients over 100+ years of combined claim experience across Florida. Our public adjusters can help with damage assessments, appraisals, litigation support, and much more.",
-                    style: paragraphStyle),
-                const Spacer(),
-                Text(
-                    "Our licensed public adjusters routinely help Florida businesses settle their claims fully and fairly by accurately assessing their damages and documenting every detail of their loss. As a fiduciary, our Florida public adjusters only represent our client's best interests and will document, prepare, and present your claim, while working collaboratively with your insurance company to expediate a resolution. Our Florida public adjusters will ensure that you receive a full and fair settlement.",
-                    style: paragraphStyle),
-                const Spacer(),
-                Text(
-                    "Those meetings and inventory documentation requirements increase the opportunity cost for many business owners and executives which take precious time away from work and family obligations. Let Claim Pros' public adjusters navigate your claim process on your behalf, so you can focus on expediting your business recovery.",
-                    style: paragraphStyle),
-                const Spacer(),
-                Text(
-                    "No matter what kind of damage you have suffered, our licensed public adjusters can help you secure a full and fair claims settlement. Call Claim Pros today and learn more about our FREE claim and policy reviews.",
-                    style: paragraphStyle),
-                const Spacer(),
-              ])),
-          ProcessCarousel(),
-         const ContactForm(),
+          const ClaimsProcess(),
           const Footer()
         ],
       ),

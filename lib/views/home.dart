@@ -7,27 +7,63 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Column(
+    final screenSize = MediaQuery.of(context).size;
+    return Column(
       children: [
         const Landing(),
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: Column(children: [
-            Text(
-                "It can be very confusing, emotional, and stressful when your home or business is damaged. Insurance contracts are complicated and present a complexity of mandatory insurance policy obligations and conditions, which are required to be completed timely or your coverage may be severely limited or even denied. Claim Pros is proud to offer its clients over 100+ years of combined claim experience across Florida.",
-                style: paragraphStyle),
-            Text(
-                "Our public adjusters have helped tens of thousands of our clients with damage assessments, appraisals, litigation support, and much more. Our licensed public adjusters routinely help Florida homeowners and businesses settle their claims fully and fairly by accurately assessing their damages and documenting every detail of their loss. As a fiduciary, our Florida public adjusters only represent our client's best interests and will document, prepare, and present your claim, while working collaboratively with your insurance company to expedite a resolution.",
-                style: paragraphStyle),
-            Text(
-                "No matter what kind of damage you have suffered, our licensed public adjusters can help you secure a full and fair claims settlement. Call Claim Pros today and learn more about our FREE claim and policy reviews.",
-                style: paragraphStyle)
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: 200,
+            maxHeight: 650,
+            minWidth: screenSize.width * 0.8,
+            maxWidth: screenSize.width * 0.9,
+          ),
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            const SizedBox(height: 20),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                minHeight: 100,
+                maxHeight: 200,
+              ),
+              child: Text("Insurance contracts are complicated...",
+                  style: titleStyle, textAlign: TextAlign.center),
+            ),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                minHeight: 70,
+                maxHeight: 100,
+              ),
+              child: Text(
+                  "I am proud to offer over 3+ years of claim experience across Florida.",
+                  style: subTitleStyle,
+                  textAlign: TextAlign.center),
+            ),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                minHeight: 100,
+                maxHeight: 250,
+              ),
+              child: Text(
+                  "Damage assessments, appraisals, litigation support, and much more. As a fiduciary, I represent my client's best interests and will document, prepare, and present your claim, while working collaboratively with your insurance company to expedite a resolution.",
+                  style: paragraphStyle,
+                  textAlign: TextAlign.center),
+            ),
+            const SizedBox(height: 10),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                minHeight: 100,
+                maxHeight: 120,
+              ),
+              child: Text(
+                  "Call me today and learn more about FREE claim and policy reviews.",
+                  style: subTitleStyle,
+                  textAlign: TextAlign.center),
+            ),
           ]),
         ),
         const Footer()
       ],
-    ));
+    );
     //const CuratorComponent(), //Unable to scroll past this component
   }
 }
