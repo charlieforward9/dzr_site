@@ -1,10 +1,13 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
+Size screenSize(context) => MediaQuery.of(context).size;
+
 const Color primaryColor = Color.fromARGB(180, 26, 69, 121);
 const Color secondaryColor = Color.fromARGB(180, 53, 125, 212);
 
-const Decoration titleBox = BoxDecoration(color: secondaryColor);
+const Decoration titleBox = BoxDecoration(
+    color: actionColor, borderRadius: BorderRadius.all(Radius.circular(5.0)));
 
 final TextStyle titleStyle =
     GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 50);

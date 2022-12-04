@@ -33,7 +33,7 @@ class ClaimsProcess extends StatelessWidget {
                                 ? actionColor
                                 : secondaryColor
                                     .withOpacity(process.indexOf(i) / 10 + 0.1),
-                            height: MediaQuery.of(context).size.height / 18,
+                            height:  screenSize(context).height / 18,
                             child: Text(
                               i,
                               softWrap: true,

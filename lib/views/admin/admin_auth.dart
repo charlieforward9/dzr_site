@@ -1,3 +1,4 @@
+import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 import 'package:dzr_site/views/admin/admin_dash.dart';
@@ -11,8 +12,8 @@ class AdminView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
+      height:  screenSize(context).height,
+      width:  screenSize(context).width,
       //child: const AdminDash()
       child: SignInScreen(
         sideBuilder: ((context, constraints) =>

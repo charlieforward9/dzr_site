@@ -28,16 +28,16 @@ class ResidentialView extends StatelessWidget {
             builder: (context, state) {
               if (state is FirebaseLoaded) {
                 return SizedBox(
-                  height: MediaQuery.of(context).size.height / 2,
-                  width: MediaQuery.of(context).size.width,
+                  height: screenSize(context).height / 2,
+                  width:  screenSize(context).width,
                   child: Stack(
                     alignment: Alignment.bottomCenter,
                     children: [
                       Positioned(
-                          top: MediaQuery.of(context).size.height / -2,
+                          top:  screenSize(context).height / -2,
                           child: state.firebaseImages[0].img!),
                       Positioned(
-                        top: MediaQuery.of(context).size.height / 4,
+                        top:  screenSize(context).height / 4,
                         child: Container(
                           decoration: titleBox,
                           child: Text("IT'S NOT A HOUSE\nIT'S YOUR HOME",

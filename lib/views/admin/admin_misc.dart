@@ -29,7 +29,7 @@ class _AdminMiscState extends State<AdminMisc> {
 
 //TODO if there is an image, do not show the plus sign
   Widget contentEntryBloc(String text, String path) => SizedBox(
-        width: MediaQuery.of(context).size.width / 2,
+        width:  screenSize(context).width / 2,
         child: Column(
           children: [
             Text(text, style: headerStyle),
@@ -41,7 +41,7 @@ class _AdminMiscState extends State<AdminMisc> {
                   return Stack(
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.3,
+                        height:  screenSize(context).height * 0.3,
                       ),
                       Center(child: () {
                         if (state is FirebaseLoading) {

@@ -61,12 +61,11 @@ class FirebaseBloc extends Bloc<FirebaseEvent, FirebaseState> {
   }
 
   Widget showContent(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return SingleChildScrollView(
         child: SizedBox(
-            height: (screenSize.height * 0.3 * data.length)
-                .clamp(screenSize.height * 0.3, screenSize.height * 0.8),
-            width: screenSize.width,
+            height: (screenSize(context).height * 0.3 * data.length)
+                .clamp(screenSize(context).height * 0.3, screenSize(context).height * 0.8),
+            width: screenSize(context).width,
             child: ListView.builder(
                 itemCount: data.length,
                 itemBuilder: (context, index) => Row(
@@ -74,8 +73,8 @@ class FirebaseBloc extends Bloc<FirebaseEvent, FirebaseState> {
                         key: ValueKey(index),
                         children: [
                           SizedBox(
-                            height: screenSize.width * 0.25,
-                            width: screenSize.width * 0.4,
+                            height: screenSize(context).width * 0.25,
+                            width: screenSize(context).width * 0.4,
                             child: ListTile(title: data[index].img),
                           ),
                           IconButton(

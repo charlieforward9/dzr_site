@@ -21,7 +21,7 @@ class _FileSelectorState extends State<FileSelector> {
     return FittedBox(
       fit: BoxFit.contain,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height / 3,
+        height: screenSize(context).height / 3,
         child: Align(
           child: AspectRatio(
             aspectRatio: 16 / 12,

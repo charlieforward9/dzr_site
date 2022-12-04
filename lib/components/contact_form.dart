@@ -40,7 +40,7 @@ class ContactFormState extends State<ContactForm> {
     return Form(
       key: _formKey,
       child: SizedBox(
-        width: MediaQuery.of(context).size.width,
+        width: screenSize(context).width,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -70,10 +70,9 @@ class ContactFormState extends State<ContactForm> {
   }
 
   Widget _formInput(String field, {int lines = 1}) {
-    final screenSize = MediaQuery.of(context).size;
     return SizedBox(
       height: 45.0 * lines,
-      width: screenSize.width / 2,
+      width: screenSize(context).width / 2,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.white70,
@@ -81,14 +80,17 @@ class ContactFormState extends State<ContactForm> {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: Text(" $field:", style: paragraphStyle),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: screenSize(context).width / 5,
+              ),
               child: TextFormField(
                 maxLines: lines,
                 validator: (value) => value == null || value.isEmpty

@@ -28,14 +28,13 @@ class Header extends StatefulWidget {
 class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: const Logo(),
           leadingWidth: 200,
-          actions: screenSize.height > screenSize.width
+          actions: screenSize(context).height > screenSize(context).width
               ? [
                   DropdownButton(
                       alignment: Alignment.centerRight,

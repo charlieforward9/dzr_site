@@ -7,7 +7,6 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Column(
       children: [
         const Landing(),
@@ -15,8 +14,8 @@ class HomeView extends StatelessWidget {
           constraints: BoxConstraints(
             minHeight: 200,
             maxHeight: 650,
-            minWidth: screenSize.width * 0.8,
-            maxWidth: screenSize.width * 0.9,
+            minWidth: screenSize(context).width * 0.8,
+            maxWidth: screenSize(context).width * 0.9,
           ),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             const SizedBox(height: 20),

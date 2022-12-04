@@ -1,4 +1,5 @@
 import 'package:dzr_site/bloc/firebase_bloc.dart';
+import 'package:dzr_site/components/contact_button.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -18,7 +19,7 @@ class Landing extends StatelessWidget {
             alignment: AlignmentDirectional.center,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: screenSize(context).width,
                 child: IgnorePointer(
                   child: () {
                     if (state is FirebaseLoaded) {
@@ -48,27 +49,7 @@ class Landing extends StatelessWidget {
                   }(),
                 ),
               ),
-              ElevatedButton(
-                style: actionButtonStyle,
-                onPressed: () => Navigator.of(context).pushNamed('/contact'),
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 4,
-                  margin: const EdgeInsets.all(10.0),
-                  child: Center(
-                    child: RichText(
-                      text: TextSpan(children: const [
-                        TextSpan(text: 'Get the coverage you deserve\n'),
-                        WidgetSpan(
-                            alignment: PlaceholderAlignment.middle,
-                            child: Icon(
-                                Icons.keyboard_double_arrow_right_outlined,
-                                color: Colors.white))
-                      ], style: actionStyle),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-              )
+              const ContactButton()
             ],
           );
         },
