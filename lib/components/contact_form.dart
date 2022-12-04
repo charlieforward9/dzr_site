@@ -28,7 +28,10 @@ class ContactFormState extends State<ContactForm> {
       _configEmail();
       cloudOps.firestore.collection("leads").add(leadData);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Processing Data')),
+        const SnackBar(
+          content: Text('Thank you, expect to be contacted by our team soon!'),
+          backgroundColor: Colors.green,
+        ),
       );
     }
   }
