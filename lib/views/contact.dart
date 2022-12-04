@@ -10,12 +10,10 @@ class ContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Column(
+    return Column(
       children: [
         SizedBox(
-          height: screenSize(context).height,
-          width:screenSize(context).width,
+          height: 1000,
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
@@ -57,7 +55,8 @@ class ContactView extends StatelessWidget {
             ],
           ),
         ),
+        const Footer()
       ],
-    ));
+    );
   }
 }

@@ -10,7 +10,7 @@ const Decoration titleBox = BoxDecoration(
     color: actionColor, borderRadius: BorderRadius.all(Radius.circular(5.0)));
 
 final TextStyle titleStyle =
-    GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 50);
+    GoogleFonts.comfortaa(fontWeight: FontWeight.w600, fontSize: 45);
 
 final TextStyle headerStyle = GoogleFonts.montserrat(
     color: Colors.black, fontWeight: FontWeight.w600, fontSize: 20);

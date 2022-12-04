@@ -16,8 +16,8 @@ class Footer extends StatelessWidget {
           child: Column(
         children: [
           const Spacer(),
-          const PageRouter(name: "admin"),
           socialBanner(),
+          const PageRouter(name: "admin"),
           const Spacer(),
         ],
       )),

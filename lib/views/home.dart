@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
         ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: 200,
-            maxHeight: 650,
+            maxHeight: 1000,
             minWidth: screenSize(context).width * 0.8,
             maxWidth: screenSize(context).width * 0.9,
           ),
@@ -22,15 +22,15 @@ class HomeView extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(
                 minHeight: 100,
-                maxHeight: 200,
+                maxHeight: 250,
               ),
-              child: Text("Insurance contracts are complicated...",
+              child: Text("Insurance contracts are complicated",
                   style: titleStyle, textAlign: TextAlign.center),
             ),
             ConstrainedBox(
               constraints: const BoxConstraints(
                 minHeight: 70,
-                maxHeight: 100,
+                maxHeight: 150,
               ),
               child: Text(
                   "I am proud to offer over 3+ years of claim experience across Florida.",
@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(
                 minHeight: 100,
-                maxHeight: 250,
+                maxHeight: 350,
               ),
               child: Text(
                   "Damage assessments, appraisals, litigation support, and much more. As a fiduciary, I represent my client's best interests and will document, prepare, and present your claim, while working collaboratively with your insurance company to expedite a resolution.",
@@ -51,7 +51,7 @@ class HomeView extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(
                 minHeight: 100,
-                maxHeight: 120,
+                maxHeight: 350,
               ),
               child: Text(
                   "Call me today and learn more about FREE claim and policy reviews.",

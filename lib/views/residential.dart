@@ -29,15 +29,15 @@ class ResidentialView extends StatelessWidget {
               if (state is FirebaseLoaded) {
                 return SizedBox(
                   height: screenSize(context).height / 2,
-                  width:  screenSize(context).width,
+                  width: screenSize(context).width,
                   child: Stack(
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.center,
                     children: [
                       Positioned(
-                          top:  screenSize(context).height / -2,
+                          top: screenSize(context).height / -2,
                           child: state.firebaseImages[0].img!),
                       Positioned(
-                        top:  screenSize(context).height / 4,
+                        top: screenSize(context).height / 4,
                         child: Container(
                           decoration: titleBox,
                           child: Text("IT'S NOT A HOUSE\nIT'S YOUR HOME",
@@ -59,7 +59,7 @@ class ResidentialView extends StatelessWidget {
         ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: 400,
-            maxHeight: 950,
+            maxHeight: 1200,
             minWidth: screenSize(context).width * 0.8,
             maxWidth: screenSize(context).width * 0.9,
           ),
@@ -79,7 +79,7 @@ class ResidentialView extends StatelessWidget {
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minHeight: 100,
-                  maxHeight: 300,
+                  maxHeight: 350,
                 ),
                 child: Text(
                     "When a residential property owner suffers damage resulting in a covered insurance claim, mandatory insurance policy conditions are required to be completed timely or your coverage may be severely limited or even denied.",
@@ -88,7 +88,7 @@ class ResidentialView extends StatelessWidget {
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minHeight: 100,
-                  maxHeight: 200,
+                  maxHeight: 300,
                 ),
                 child: Text(
                     "Depending on the complexity of the claim, the policyholder may need to secure temporary housing, I document, prepare, and present these out of pocket expenses to make sure your reimbursement is expedited.",
@@ -97,7 +97,7 @@ class ResidentialView extends StatelessWidget {
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minHeight: 100,
-                  maxHeight: 200,
+                  maxHeight: 250,
                 ),
                 child: Text(
                     "It can be difficult to quantify depreciation, distinguishing the appropriateness of replacement versus repair costs, and preparing reimbursement for additional living expenses.",
@@ -106,13 +106,14 @@ class ResidentialView extends StatelessWidget {
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minHeight: 100,
-                  maxHeight: 120,
+                  maxHeight: 150,
                 ),
                 child: Text(
                     "Call me today and learn more about FREE claim and policy reviews.",
                     style: subTitleStyle,
                     textAlign: TextAlign.center),
               ),
+              const SizedBox(height: 20)
             ],
           ),
         ),
