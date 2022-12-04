@@ -67,17 +67,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-      - logo.png
-      - crp1.png
-      - crp2.png
-      - crp3.png
-      - crp4.png
-      - crp5.png
-      - crp6.png
-      - crp7.png
-      - crp8.png
-      - crp9.png
-      - dan.jpg
+    - logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
