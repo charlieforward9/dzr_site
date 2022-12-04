@@ -27,20 +27,12 @@ class CommercialView extends StatelessWidget {
                         Positioned(
                             top: screenSize(context).height * -1.5,
                             child: state.firebaseImages[0].img!),
-                        Positioned(
-                          top: screenSize(context).height / 4,
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(
-                                minWidth: screenSize(context).width / 2,
-                                maxWidth: screenSize(context).width),
-                            child: Container(
-                              decoration: titleBox,
-                              child: Text(
-                                "OUR BUSINESS\n FOR YOUR BUSINESS",
-                                style: titleStyle,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
+                        FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Container(
+                            decoration: titleBox,
+                            child: Text("OUR BUSINESS\n FOR YOUR BUSINESS",
+                                style: titleStyle, textAlign: TextAlign.center),
                           ),
                         ),
                       ],
@@ -58,9 +50,9 @@ class CommercialView extends StatelessWidget {
           ConstrainedBox(
             constraints: BoxConstraints(
               minHeight: 300,
-              maxHeight: 1000,
+              maxHeight: 1200,
               minWidth: screenSize(context).width * 0.8,
-              maxWidth: screenSize(context).width * 0.9,
+              maxWidth: screenSize(context).width * 0.95,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -78,7 +70,7 @@ class CommercialView extends StatelessWidget {
                 ConstrainedBox(
                   constraints: const BoxConstraints(
                     minHeight: 100,
-                    maxHeight: 350,
+                    maxHeight: 400,
                   ),
                   child: Text(
                       "For commerial property owner suffering damage resulting in a covered insurance claim, mandatory insurance policy conditions are required to be completed timely or your coverage may be severely limited or even denied.",
@@ -87,7 +79,7 @@ class CommercialView extends StatelessWidget {
                 ConstrainedBox(
                   constraints: const BoxConstraints(
                     minHeight: 100,
-                    maxHeight: 300,
+                    maxHeight: 400,
                   ),
                   child: Text(
                       "Meetings and inventory documentation requirements take precious time away from work obligations. Let us navigate your claim process on your behalf, so you can focus on expediting your business recovery.",

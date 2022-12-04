@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
             minHeight: 200,
             maxHeight: 1000,
             minWidth: screenSize(context).width * 0.8,
-            maxWidth: screenSize(context).width * 0.9,
+            maxWidth: screenSize(context).width * 0.95,
           ),
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             const SizedBox(height: 20),
@@ -30,7 +30,7 @@ class HomeView extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(
                 minHeight: 70,
-                maxHeight: 150,
+                maxHeight: 200,
               ),
               child: Text(
                   "I am proud to offer over 3+ years of claim experience across Florida.",
@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(
                 minHeight: 100,
-                maxHeight: 350,
+                maxHeight: 400,
               ),
               child: Text(
                   "Damage assessments, appraisals, litigation support, and much more. As a fiduciary, I represent my client's best interests and will document, prepare, and present your claim, while working collaboratively with your insurance company to expedite a resolution.",

@@ -29,7 +29,7 @@ class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBodyBehindAppBar: true,
+        extendBodyBehindAppBar: false,
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: const Logo(),

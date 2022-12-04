@@ -10,8 +10,6 @@ class ContactForm extends StatefulWidget {
 }
 
 class ContactFormState extends State<ContactForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
   Map<String, dynamic> leadData = {};
 
@@ -70,9 +68,11 @@ class ContactFormState extends State<ContactForm> {
   }
 
   Widget _formInput(String field, {int lines = 1}) {
-    return SizedBox(
-      height: 45.0 * lines,
-      width: screenSize(context).width / 2,
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+          minHeight: 45.0 * lines,
+          minWidth: screenSize(context).width / 2,
+          maxWidth: screenSize(context).width),
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.white70,
@@ -89,16 +89,19 @@ class ContactFormState extends State<ContactForm> {
             ),
             ConstrainedBox(
               constraints: BoxConstraints(
-                maxWidth: screenSize(context).width / 5,
+                maxWidth: screenSize(context).width / 2,
               ),
-              child: TextFormField(
-                maxLines: lines,
-                validator: (value) => value == null || value.isEmpty
-                    ? 'Please enter your information'
-                    : null,
-                onSaved: (String? value) {
-                  _storeValue(field, value);
-                },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: TextFormField(
+                  maxLines: lines,
+                  validator: (value) => value == null || value.isEmpty
+                      ? 'Please enter your information'
+                      : null,
+                  onSaved: (String? value) {
+                    _storeValue(field, value);
+                  },
+                ),
               ),
             ),
           ],
