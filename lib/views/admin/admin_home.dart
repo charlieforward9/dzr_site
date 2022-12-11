@@ -1,6 +1,7 @@
 import 'package:dzr_site/bloc/firebase_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class AdminHome extends StatefulWidget {
   const AdminHome({super.key});
@@ -27,7 +28,7 @@ class _AdminHomeState extends State<AdminHome> {
                       .showContent(context);
                 }
                 if (state is FirebaseError) {
-                  return Text(state.error.toString());
+                  return TextRenderer(child: Text(state.error.toString()));
                 } else {
                   return const CircularProgressIndicator();
                 }

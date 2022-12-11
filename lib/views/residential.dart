@@ -3,6 +3,7 @@ import 'package:dzr_site/components/components.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class ResidentialView extends StatelessWidget {
   const ResidentialView({super.key});
@@ -40,15 +41,17 @@ class ResidentialView extends StatelessWidget {
                         fit: BoxFit.fitWidth,
                         child: Container(
                           decoration: titleBox,
-                          child: Text("IT'S NOT A HOUSE\nIT'S YOUR HOME",
-                              style: titleStyle, textAlign: TextAlign.center),
+                          child: TextRenderer(
+                            child: Text("IT'S NOT A HOUSE\nIT'S YOUR HOME",
+                                style: titleStyle, textAlign: TextAlign.center),
+                          ),
                         ),
                       )
                     ],
                   ),
                 );
               } else if (state is FirebaseError) {
-                return Text(state.error.toString());
+                return TextRenderer(child: Text(state.error.toString()));
               } else {
                 return const CircularProgressIndicator();
               }
@@ -71,47 +74,57 @@ class ResidentialView extends StatelessWidget {
                   minHeight: 80,
                   maxHeight: 200,
                 ),
-                child: Text(
-                    "Insurance claims can be a very confusing, emotional, and stressful process.",
-                    style: subTitleStyle,
-                    textAlign: TextAlign.center),
+                child: TextRenderer(
+                  child: Text(
+                      "Insurance claims can be a very confusing, emotional, and stressful process.",
+                      style: subTitleStyle,
+                      textAlign: TextAlign.center),
+                ),
               ),
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minHeight: 100,
                   maxHeight: 400,
                 ),
-                child: Text(
-                    "When a residential property owner suffers damage resulting in a covered insurance claim, mandatory insurance policy conditions are required to be completed timely or your coverage may be severely limited or even denied.",
-                    style: paragraphStyle),
+                child: TextRenderer(
+                  child: Text(
+                      "When a residential property owner suffers damage resulting in a covered insurance claim, mandatory insurance policy conditions are required to be completed timely or your coverage may be severely limited or even denied.",
+                      style: paragraphStyle),
+                ),
               ),
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minHeight: 100,
                   maxHeight: 400,
                 ),
-                child: Text(
-                    "Depending on the complexity of the claim, the policyholder may need to secure temporary housing, I document, prepare, and present these out of pocket expenses to make sure your reimbursement is expedited.",
-                    style: paragraphStyle),
+                child: TextRenderer(
+                  child: Text(
+                      "Depending on the complexity of the claim, the policyholder may need to secure temporary housing, I document, prepare, and present these out of pocket expenses to make sure your reimbursement is expedited.",
+                      style: paragraphStyle),
+                ),
               ),
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minHeight: 100,
                   maxHeight: 400,
                 ),
-                child: Text(
-                    "It can be difficult to quantify depreciation, distinguishing the appropriateness of replacement versus repair costs, and preparing reimbursement for additional living expenses.",
-                    style: paragraphStyle),
+                child: TextRenderer(
+                  child: Text(
+                      "It can be difficult to quantify depreciation, distinguishing the appropriateness of replacement versus repair costs, and preparing reimbursement for additional living expenses.",
+                      style: paragraphStyle),
+                ),
               ),
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minHeight: 100,
                   maxHeight: 200,
                 ),
-                child: Text(
-                    "Call me today and learn more about FREE claim and policy reviews.",
-                    style: subTitleStyle,
-                    textAlign: TextAlign.center),
+                child: TextRenderer(
+                  child: Text(
+                      "Call me today and learn more about FREE claim and policy reviews.",
+                      style: subTitleStyle,
+                      textAlign: TextAlign.center),
+                ),
               ),
               const SizedBox(height: 20)
             ],

@@ -1,5 +1,6 @@
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class Header extends StatefulWidget {
   final String name;
@@ -41,7 +42,8 @@ class _HeaderState extends State<Header> {
                       items: Header.dropdownActions,
                       icon: const Icon(Icons.list_sharp),
                       iconSize: 36,
-                      hint: Text("Learn More", style: headerStyle),
+                      hint: TextRenderer(
+                          child: Text("Learn More", style: headerStyle)),
                       onChanged: (_) {})
                 ]
               : Header.actions,
@@ -70,10 +72,12 @@ class PageRouter extends StatelessWidget {
     return ElevatedButton(
       style: headerButtonStyle,
       onPressed: () => Navigator.of(context).pushNamed('/$name'),
-      child: Text(
-        name,
-        maxLines: 1,
-        style: headerStyle,
+      child: TextRenderer(
+        child: Text(
+          name,
+          maxLines: 1,
+          style: headerStyle,
+        ),
       ),
     );
   }

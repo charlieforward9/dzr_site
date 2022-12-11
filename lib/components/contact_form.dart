@@ -1,6 +1,7 @@
 import 'package:dzr_site/firebase.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class ContactForm extends StatefulWidget {
   const ContactForm({super.key});
@@ -29,7 +30,9 @@ class ContactFormState extends State<ContactForm> {
       cloudOps.firestore.collection("leads").add(leadData);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Thank you, expect to be contacted by our team soon!'),
+          content: TextRenderer(
+              child:
+                  Text('Thank you, expect to be contacted by our team soon!')),
           backgroundColor: Colors.green,
         ),
       );
@@ -61,7 +64,8 @@ class ContactFormState extends State<ContactForm> {
                 onPressed: _storeContact,
                 child: Container(
                     margin: const EdgeInsets.all(10.0),
-                    child: Text('Submit', style: actionStyle)),
+                    child: TextRenderer(
+                        child: Text('Submit', style: actionStyle))),
               ),
             ],
           ),
@@ -88,7 +92,8 @@ class ContactFormState extends State<ContactForm> {
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: Text(" $field:", style: paragraphStyle),
+              child:
+                  TextRenderer(child: Text(" $field:", style: paragraphStyle)),
             ),
             ConstrainedBox(
               constraints: BoxConstraints(

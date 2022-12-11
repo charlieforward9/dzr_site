@@ -2,6 +2,7 @@ import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dzr_site/bloc/firebase_bloc.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class AdminMisc extends StatefulWidget {
   const AdminMisc({super.key});
@@ -29,10 +30,10 @@ class _AdminMiscState extends State<AdminMisc> {
 
 //TODO if there is an image, do not show the plus sign
   Widget contentEntryBloc(String text, String path) => SizedBox(
-        width:  screenSize(context).width / 2,
+        width: screenSize(context).width / 2,
         child: Column(
           children: [
-            Text(text, style: headerStyle),
+            TextRenderer(child: Text(text, style: headerStyle)),
             BlocProvider(
               create: (context) =>
                   FirebaseBloc()..add(FirebaseFetch(path: path)),
@@ -41,7 +42,7 @@ class _AdminMiscState extends State<AdminMisc> {
                   return Stack(
                     children: [
                       SizedBox(
-                        height:  screenSize(context).height * 0.3,
+                        height: screenSize(context).height * 0.3,
                       ),
                       Center(child: () {
                         if (state is FirebaseLoading) {
@@ -52,7 +53,8 @@ class _AdminMiscState extends State<AdminMisc> {
                               .showContent(context);
                         }
                         if (state is FirebaseError) {
-                          return Text(state.error.toString());
+                          return TextRenderer(
+                              child: Text(state.error.toString()));
                         }
                       }()),
                       Positioned(

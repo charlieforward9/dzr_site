@@ -1,5 +1,6 @@
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 Future<void> consentDialog(
     BuildContext context,
@@ -13,15 +14,15 @@ Future<void> consentDialog(
     useRootNavigator: false,
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      title: Text(title),
-      content: Text(content),
+      title: TextRenderer(child: Text(title)),
+      content: TextRenderer(child: Text(content)),
       actions: [
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
             style: headerButtonStyle,
             onPressed: secondaryCallback,
-            child: Text(secondaryAction),
+            child: TextRenderer(child: Text(secondaryAction)),
           ),
         ),
         Padding(
@@ -29,7 +30,7 @@ Future<void> consentDialog(
           child: ElevatedButton(
             style: actionButtonStyle,
             onPressed: primaryCallback,
-            child: Text(primaryAction),
+            child: TextRenderer(child: Text(primaryAction)),
           ),
         ),
       ],

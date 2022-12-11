@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dzr_site/views/admin/admin.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class AdminDash extends StatefulWidget {
   const AdminDash({super.key});
@@ -33,7 +34,7 @@ class _AdminDashState extends State<AdminDash>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Site Content'),
+        title: const TextRenderer(child: Text('Edit Site Content')),
         bottom: TabBar(
           controller: _tabController,
           tabs: _tabs,

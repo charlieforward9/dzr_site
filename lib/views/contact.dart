@@ -3,6 +3,7 @@ import 'package:dzr_site/components/components.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class ContactView extends StatelessWidget {
   const ContactView({super.key});
@@ -33,15 +34,17 @@ class ContactView extends StatelessWidget {
                             top: screenSize(context).height / 5,
                             child: Container(
                               decoration: titleBox,
-                              child: Text("CONTACT US",
-                                  style: titleStyle,
-                                  textAlign: TextAlign.center),
+                              child: TextRenderer(
+                                child: Text("CONTACT US",
+                                    style: titleStyle,
+                                    textAlign: TextAlign.center),
+                              ),
                             ),
                           ),
                         ],
                       );
                     } else if (state is FirebaseError) {
-                      return Text(state.error.toString());
+                      return TextRenderer(child: Text(state.error.toString()));
                     } else {
                       return const CircularProgressIndicator();
                     }

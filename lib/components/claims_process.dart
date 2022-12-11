@@ -1,6 +1,7 @@
 import 'package:dzr_site/components/components.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/renderers/text_renderer/text_renderer_vm.dart';
 
 class ClaimsProcess extends StatelessWidget {
   const ClaimsProcess({super.key});
@@ -22,8 +23,10 @@ class ClaimsProcess extends StatelessWidget {
             minHeight: 400, maxHeight: 650, minWidth: 600.0),
         child: Column(
           children: [
-            Text("CLAIMS RECOVERY PROCESS",
-                style: titleStyle, textAlign: TextAlign.center),
+            TextRenderer(
+              child: Text("CLAIMS RECOVERY PROCESS",
+                  style: titleStyle, textAlign: TextAlign.center),
+            ),
             Column(
                 children: process
                     .map<Widget>((i) => Builder(
@@ -33,13 +36,15 @@ class ClaimsProcess extends StatelessWidget {
                                 ? actionColor
                                 : secondaryColor
                                     .withOpacity(process.indexOf(i) / 10 + 0.1),
-                            height:  screenSize(context).height / 18,
-                            child: Text(
-                              i,
-                              softWrap: true,
-                              textAlign: TextAlign.center,
-                              style: captionStyle,
-                              maxLines: 1,
+                            height: screenSize(context).height / 18,
+                            child: TextRenderer(
+                              child: Text(
+                                i,
+                                softWrap: true,
+                                textAlign: TextAlign.center,
+                                style: captionStyle,
+                                maxLines: 1,
+                              ),
                             ))))
                     .toList()),
             const Spacer(),

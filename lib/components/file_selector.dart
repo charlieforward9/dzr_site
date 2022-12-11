@@ -2,6 +2,7 @@ import 'package:dzr_site/bloc/firebase_bloc.dart';
 import 'package:dzr_site/styles.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class FileSelector extends StatefulWidget {
   final String path;
@@ -34,7 +35,8 @@ class _FileSelectorState extends State<FileSelector> {
                       color: Colors.blue[100],
                       child: pickedFile != null
                           ? Image.memory(pickedFile!.bytes!, fit: BoxFit.cover)
-                          : const Text("No image selected"),
+                          : const TextRenderer(
+                              child: Text("No image selected")),
                     ),
                   ),
                   AspectRatio(
@@ -52,8 +54,10 @@ class _FileSelectorState extends State<FileSelector> {
                           style: headerButtonStyle,
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
-                            child: Text("Select File",
-                                style: smallActionStyle, maxLines: 1),
+                            child: TextRenderer(
+                              child: Text("Select File",
+                                  style: smallActionStyle, maxLines: 1),
+                            ),
                           ),
                         ),
                         ElevatedButton(
@@ -64,14 +68,18 @@ class _FileSelectorState extends State<FileSelector> {
                                 : null;
                             Navigator.of(context).pop();
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('File Uploaded')),
+                              const SnackBar(
+                                  content: TextRenderer(
+                                      child: Text('File Uploaded'))),
                             );
                           },
                           style: headerButtonStyle,
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
-                            child: Text("Upload File",
-                                style: smallActionStyle, maxLines: 1),
+                            child: TextRenderer(
+                              child: Text("Upload File",
+                                  style: smallActionStyle, maxLines: 1),
+                            ),
                           ),
                         ),
                       ],

@@ -4,6 +4,7 @@ import 'package:dzr_site/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 class Landing extends StatelessWidget {
   const Landing({super.key});
@@ -44,7 +45,7 @@ class Landing extends StatelessWidget {
                       return const CircularProgressIndicator();
                     }
                     if (state is FirebaseError) {
-                      return Text(state.error.toString());
+                      return TextRenderer(child: Text(state.error.toString()));
                     }
                   }(),
                 ),
