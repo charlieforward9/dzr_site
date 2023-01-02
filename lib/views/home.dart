@@ -37,7 +37,7 @@ class HomeView extends StatelessWidget {
               ),
               child: TextRenderer(
                 child: Text(
-                    "I am proud to offer over 3+ years of claim experience across Florida.",
+                    "I am proud to offer over 30+ years of combined claim experience across Florida.",
                     style: subTitleStyle,
                     textAlign: TextAlign.center),
               ),

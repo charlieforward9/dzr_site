@@ -25,7 +25,8 @@ class FirebaseBloc extends Bloc<FirebaseEvent, FirebaseState> {
         await Future.wait(
           ref.map((item) async {
             final url = await item.getData();
-            data.add(FirebaseImage(ref: item, img: Image.memory(url!)));
+            data.add(FirebaseImage(
+                ref: item, img: Image.memory(url!, fit: BoxFit.fitWidth)));
           }).toList(),
         );
       });
@@ -63,8 +64,9 @@ class FirebaseBloc extends Bloc<FirebaseEvent, FirebaseState> {
   Widget showContent(BuildContext context) {
     return SingleChildScrollView(
         child: SizedBox(
-            height: (screenSize(context).height * 0.3 * data.length)
-                .clamp(screenSize(context).height * 0.3, screenSize(context).height * 0.8),
+            height: (screenSize(context).height * 0.3 * data.length).clamp(
+                screenSize(context).height * 0.3,
+                screenSize(context).height * 0.8),
             width: screenSize(context).width,
             child: ListView.builder(
                 itemCount: data.length,
